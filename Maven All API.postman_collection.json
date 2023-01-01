@@ -1,0 +1,1772 @@
+{
+	"info": {
+		"_postman_id": "c933ba05-28c6-40fe-979e-25b1989e5396",
+		"name": "Maven All API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authenticate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "prakash",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "abcd@1234",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/auth/authservice/webapi/login/authenticate",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"auth",
+						"authservice",
+						"webapi",
+						"login",
+						"authenticate"
+					]
+				},
+				"description": "This will help you in Authenticating in OMS.\nAfter calling this API a Token will be returned as a Response.\nThis token will be used in subsequent requests send to OMS."
+			},
+			"response": []
+		},
+		{
+			"name": "Create or Update SKU",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"brand\": \"KOOVS\",\n        \"category\" : \"s3\",\n        \"name\": \"S3test1\",\n        \"description\": \"Koovs\",\n        \"hsn\": \"6405\",\n        \"skuCode\": \"18913592\",\n        \"upcEanCode\": \"ZXDdSKfL2\",\n        \"image\" : \"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\",\n        \"attributes\": [\n            \"Returnable:true\",\n            \"UOM:Pairs\",\n            \"Type:Flip flops & Sandals\",\n            \"sizeValue:UK 6/US 7\",\n            \"End Use:Casual\",\n            \"colorValue:Blue\",\n            \"Material Type:Leather\",\n            \"wms:Maven\",\n            \"Discount Allowed:NO\",\n            \"Country Origin:India\",\n            \"Sku Units:10\"\n        ]\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/skus/create",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"oms",
+						"omsservices",
+						"webapi",
+						"skus",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create PO",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"orderId\": \"BBPO2\",\r\n\t\"warehouseName\": \"GL_WH_Bangalore\",\r\n\t\"vendorCode\": \"827000002\",\r\n    \"vendorName\" : \"NewVendor\",\r\n\t\"orderItems\": [{\r\n\t\t\"sellerSkuId\": \"Inventory_01\",\r\n\t\t\"quantity\": 11,\r\n\t\t\"pricePerItem\": 11.11\r\n\t}],\r\n\t\"shippingOwner\": \"RECEIVER\",\r\n\t\"vendorAddressLine1\": \"Good Day New Delhi\",\r\n\t\"vendorAddressLine2\": null,\r\n\t\"vendorAddressLine3\": null,\r\n\t\"vendorCity\": \"Noida\",\r\n\t\"vendorDistrict\": \"Delhi\",\r\n\t\"vendorState\": \"Delhi\",\r\n\t\"vendorPincode\": \"110079\",\r\n\t\"vendorCountry\": null,\r\n\t\"paymentType\": \"Credit Card\",\r\n\t\"shippingService\": \"FEDEX_STANDARD_OVERNIGHT\",\r\n\t\"pickUpDate\": \"2019-12-08 13:59:50\",\r\n\t\"dropDate\": \"2019-12-11 13:59:50\",\r\n\t\"remarks\": null\r\n}"
+				},
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/purchase/order/create",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"oms",
+						"omsservices",
+						"webapi",
+						"purchase",
+						"order",
+						"create"
+					]
+				},
+				"description": "This api can at max serve 20 ordernumber details"
+			},
+			"response": [
+				{
+					"name": "GetPackDoneDetails",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Referer",
+								"value": "https://industrybuying.gscmaven.com",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "https://industrybuying.gscmaven.com",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\t\"ordernumbers\": null,\n\t\t\"sincedate\" : 43000\n}"
+						},
+						"url": {
+							"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/packdonedetails/orderwise",
+							"protocol": "https",
+							"host": [
+								"testsku",
+								"gscmaven",
+								"in"
+							],
+							"path": [
+								"api",
+								"oms",
+								"omsservices",
+								"webapi",
+								"packdonedetails",
+								"orderwise"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.10.3 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 26 Feb 2019 06:45:31 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html;charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "https://industrybuying.gscmaven.com"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "X-Application-Context",
+							"value": "zuul:prod:8079"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "JSESSIONID=0898275A2E801F5F91B9237B4603E2C5; Path=/omsservices; HttpOnly"
+						},
+						{
+							"key": "Content-Language",
+							"value": "en"
+						}
+					],
+					"cookie": [],
+					"body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 401 – Unauthorized</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 401 – Unauthorized</h1><hr class=\"line\" /><p><b>Type</b> Status Report</p><p><b>Message</b> Unauthenticated</p><p><b>Description</b> The request has not been applied because it lacks valid authentication credentials for the target resource.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.10</h3></body></html>"
+				}
+			]
+		},
+		{
+			"name": "Get GRN Details",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\t\"ordernumbers\": [\"224220000HB\"]\t,\n\t\t\"sincedate\" : null\n}"
+				},
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/grndetails/orderwise",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"oms",
+						"omsservices",
+						"webapi",
+						"grndetails",
+						"orderwise"
+					]
+				},
+				"description": "This api can at max serve 20 ordernumber details"
+			},
+			"response": [
+				{
+					"name": "GetPackDoneDetails",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Referer",
+								"value": "https://industrybuying.gscmaven.com",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "https://industrybuying.gscmaven.com",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\t\"ordernumbers\": null,\n\t\t\"sincedate\" : 43000\n}"
+						},
+						"url": {
+							"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/packdonedetails/orderwise",
+							"protocol": "https",
+							"host": [
+								"testsku",
+								"gscmaven",
+								"in"
+							],
+							"path": [
+								"api",
+								"oms",
+								"omsservices",
+								"webapi",
+								"packdonedetails",
+								"orderwise"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.10.3 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 26 Feb 2019 06:45:31 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html;charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "https://industrybuying.gscmaven.com"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "X-Application-Context",
+							"value": "zuul:prod:8079"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "JSESSIONID=0898275A2E801F5F91B9237B4603E2C5; Path=/omsservices; HttpOnly"
+						},
+						{
+							"key": "Content-Language",
+							"value": "en"
+						}
+					],
+					"cookie": [],
+					"body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 401 – Unauthorized</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 401 – Unauthorized</h1><hr class=\"line\" /><p><b>Type</b> Status Report</p><p><b>Message</b> Unauthenticated</p><p><b>Description</b> The request has not been applied because it lacks valid authentication credentials for the target resource.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.10</h3></body></html>"
+				}
+			]
+		},
+		{
+			"name": "Create Sale Order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"orderId\" : \"6016179\",\n  \"orderItems\" : [ {\n    \"orderItemId\" : \"1972659\",\n    \"quantity\" : 1,\n    \"sellerSkuId\" : \"1891366\",\n    \"sellingPricePerItem\" : 1100\n  }, {\n    \"orderItemId\" : \"1972660\",\n    \"quantity\" : 1,\n    \"sellerSkuId\" : \"1891366\",\n    \"sellingPricePerItem\" : 1100\n  } ],\n  \"custDetails\" : {\n    \"firstName\" : \"kamal agarahari\",\n    \"shippingAddressLine1\" : \"sector 18\",\n    \"shippingAddressLine2\" : \" \",\n    \"shippingAddressLine3\" : \" \",\n    \"shippingPincode\" : \"122016\",\n    \"shippingCity\" : \"Gurugram\",\n    \"shippingDistrict\" : \"Gurugram\",\n    \"shippingState\" : \"HARYANA\",\n    \"phoneNumber\" : \"9599054421\",\n    \"emailId\" : \"kamala.prasad@koovs.com\",\n    \"billingAddressSameAsShipping\" : \"yes\"\n  },\n  \"shippingCost\" : 0,\n  \"warehouseName\" : \"Test_SKU\",\n  \"paymentType\" : null,\n  \"salesChannel\" : \"Koovs\"\n}"
+				},
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/orders/create",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"oms",
+						"omsservices",
+						"webapi",
+						"orders",
+						"create"
+					]
+				},
+				"description": "This endpoint will create the Sale Order in OMS(Order Management System).The Sale Order will be in New State.\nThe Sale Order can be created with multiple Sale Order Skus."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pack Done Details",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\t\"ordernumbers\": [\"124220000FA\"]\t,\n\t\t\"sincedate\" : null\n}"
+				},
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/packdonedetails/v2/orderwise?boxdetails=false&invoice=false",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"oms",
+						"omsservices",
+						"webapi",
+						"packdonedetails",
+						"v2",
+						"orderwise"
+					],
+					"query": [
+						{
+							"key": "boxdetails",
+							"value": "false"
+						},
+						{
+							"key": "invoice",
+							"value": "false"
+						}
+					]
+				},
+				"description": "This api can at max serve 20 ordernumber details"
+			},
+			"response": [
+				{
+					"name": "GetPackDoneDetails",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Referer",
+								"value": "https://industrybuying.gscmaven.com",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "https://industrybuying.gscmaven.com",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\t\"ordernumbers\": null,\n\t\t\"sincedate\" : 43000\n}"
+						},
+						"url": {
+							"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/packdonedetails/orderwise",
+							"protocol": "https",
+							"host": [
+								"testsku",
+								"gscmaven",
+								"in"
+							],
+							"path": [
+								"api",
+								"oms",
+								"omsservices",
+								"webapi",
+								"packdonedetails",
+								"orderwise"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.10.3 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 26 Feb 2019 06:45:31 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html;charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "https://industrybuying.gscmaven.com"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "X-Application-Context",
+							"value": "zuul:prod:8079"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "JSESSIONID=0898275A2E801F5F91B9237B4603E2C5; Path=/omsservices; HttpOnly"
+						},
+						{
+							"key": "Content-Language",
+							"value": "en"
+						}
+					],
+					"cookie": [],
+					"body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 401 – Unauthorized</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 401 – Unauthorized</h1><hr class=\"line\" /><p><b>Type</b> Status Report</p><p><b>Message</b> Unauthenticated</p><p><b>Description</b> The request has not been applied because it lacks valid authentication credentials for the target resource.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.10</h3></body></html>"
+				}
+			]
+		},
+		{
+			"name": "Cancel Sale Order Item",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderId\": \"abc01\",\n    \"orderItems\": [\n        {\n            \"orderItemId\": \"123\",\n            \"sellerSkuId\": \"100123\",\n            \"quantity\": 20\n        }\n    ],\n    \"shippingCost\": 12.12\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/orders/cancelsaleorderitem",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"oms",
+						"omsservices",
+						"webapi",
+						"orders",
+						"cancelsaleorderitem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Sale Order",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/orders/cancelsaleorder?clientordernumber=9999",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"oms",
+						"omsservices",
+						"webapi",
+						"orders",
+						"cancelsaleorder"
+					],
+					"query": [
+						{
+							"key": "clientordernumber",
+							"value": "9999"
+						}
+					]
+				},
+				"description": "This endpoint will create the Sale Order in OMS(Order Management System).The Sale Order will be in New State.\nThe Sale Order can be created with multiple Sale Order Skus."
+			},
+			"response": []
+		},
+		{
+			"name": "Create Sale Return",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"channel\": \"01\",\r\n    \"returnRef\": \"Test\",\r\n    \"returnSkus\": [\r\n        {\r\n            \"skuCode\": \"skucode\",\r\n            \"skuQuantity\": 1\r\n        }\r\n    ],\r\n    \"customerDetails\": {\r\n        \"customerCode\": \"0001100003\",\r\n        \"firstName\": \"M\",\r\n        \"lastName\": \"K\",\r\n        \"emailId\": \"ab@cd.com\",\r\n        \"phoneNumber\": \"9899999999\",\r\n        \"isPrimaryShippingAddress\": \"YES\",\r\n        \"shippingAddressLine1\": \"POCKET 7 SECTOR 24 ROHINI\",\r\n        \"shippingAddressLine2\": \"BLDG. NO. 276 SECOND FLOOR\",\r\n        \"shippingAddressLine3\": \"BLDG. NO. 276 SECOND FLOOR\",\r\n        \"shippingCountry\": \"IN\",\r\n        \"shippingState\": \"DL\",\r\n        \"shippingDistrict\": \"NEW DELHI\",\r\n        \"shippingCity\": \"NEW DELHI\",\r\n        \"shippingPincode\": \"110085\",\r\n        \"gstin\": \"07AAIFH9331F1ZD\"\r\n    },\r\n    \"reason\": \"Damaged in transit\",\r\n    \"remarks\": \"Damaged in transit\",\r\n    \"shippingOwner\": \"Sender\",\r\n    \"dropDateFormatted\": \"2022-02-10 00:00:00\"\r\n}"
+				},
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/salereturn/create",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"oms",
+						"omsservices",
+						"webapi",
+						"salereturn",
+						"create"
+					]
+				},
+				"description": "This api can at max serve 20 ordernumber details"
+			},
+			"response": [
+				{
+					"name": "GetPackDoneDetails",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Referer",
+								"value": "https://industrybuying.gscmaven.com",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "https://industrybuying.gscmaven.com",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\t\"ordernumbers\": null,\n\t\t\"sincedate\" : 43000\n}"
+						},
+						"url": {
+							"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/packdonedetails/orderwise",
+							"protocol": "https",
+							"host": [
+								"testsku",
+								"gscmaven",
+								"in"
+							],
+							"path": [
+								"api",
+								"oms",
+								"omsservices",
+								"webapi",
+								"packdonedetails",
+								"orderwise"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.10.3 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 26 Feb 2019 06:45:31 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html;charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "https://industrybuying.gscmaven.com"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "X-Application-Context",
+							"value": "zuul:prod:8079"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "JSESSIONID=0898275A2E801F5F91B9237B4603E2C5; Path=/omsservices; HttpOnly"
+						},
+						{
+							"key": "Content-Language",
+							"value": "en"
+						}
+					],
+					"cookie": [],
+					"body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 401 – Unauthorized</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 401 – Unauthorized</h1><hr class=\"line\" /><p><b>Type</b> Status Report</p><p><b>Message</b> Unauthenticated</p><p><b>Description</b> The request has not been applied because it lacks valid authentication credentials for the target resource.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.10</h3></body></html>"
+				}
+			]
+		},
+		{
+			"name": "Cancel Sale Return Item",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"returnRef\": \"abc01\",\n    \"orderItems\": [\n        {\n            \"orderItemId\": \"123\",\n            \"sellerSkuId\": \"100123\",\n            \"quantity\": 20\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/salereturn/cancelsalereturnitem",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"oms",
+						"omsservices",
+						"webapi",
+						"salereturn",
+						"cancelsalereturnitem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Sale Return",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/salereturn/cancelsalereturn?ordernumber=5562000003D",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"oms",
+						"omsservices",
+						"webapi",
+						"salereturn",
+						"cancelsalereturn"
+					],
+					"query": [
+						{
+							"key": "ordernumber",
+							"value": "5562000003D"
+						}
+					]
+				},
+				"description": "This api can at max serve 20 ordernumber details"
+			},
+			"response": [
+				{
+					"name": "GetPackDoneDetails",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Referer",
+								"value": "https://industrybuying.gscmaven.com",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "https://industrybuying.gscmaven.com",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\t\"ordernumbers\": null,\n\t\t\"sincedate\" : 43000\n}"
+						},
+						"url": {
+							"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/packdonedetails/orderwise",
+							"protocol": "https",
+							"host": [
+								"testsku",
+								"gscmaven",
+								"in"
+							],
+							"path": [
+								"api",
+								"oms",
+								"omsservices",
+								"webapi",
+								"packdonedetails",
+								"orderwise"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.10.3 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 26 Feb 2019 06:45:31 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html;charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "https://industrybuying.gscmaven.com"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "X-Application-Context",
+							"value": "zuul:prod:8079"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "JSESSIONID=0898275A2E801F5F91B9237B4603E2C5; Path=/omsservices; HttpOnly"
+						},
+						{
+							"key": "Content-Language",
+							"value": "en"
+						}
+					],
+					"cookie": [],
+					"body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 401 – Unauthorized</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 401 – Unauthorized</h1><hr class=\"line\" /><p><b>Type</b> Status Report</p><p><b>Message</b> Unauthenticated</p><p><b>Description</b> The request has not been applied because it lacks valid authentication credentials for the target resource.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.10</h3></body></html>"
+				}
+			]
+		},
+		{
+			"name": "Create Stock Transfer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderId\": \"NicobarTestST\",\n    \"fromWarehouseName\": \"Source Warehouse\",\n    \"toWarehouseName\": \"GL_WH_Bangalore\",\n    \"stockTransferSkuDto\": [\n        {\n            \"sellerSkuId\": \"Inventory_01\",\n            \"quantity\": 1\n        }\n    ],\n    \"pickUpDate\": \"2020-03-05T18:30:00Z\",\n    \"dropDate\": \"2020-03-05T18:30:00Z\",\n    \"remarks\": \"None\",\n    \"grade\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/stock/transfer/createstocktransfer",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"oms",
+						"omsservices",
+						"webapi",
+						"stock",
+						"transfer",
+						"createstocktransfer"
+					]
+				},
+				"description": "create stock transfer"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Purchase Return",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"returnRef\": \"a11234\",\r\n   \"warehouseName\": \"GL_WH_Smalkha\",\r\n   \"vendorCode\": \"827000002\",\r\n   \"shippingOwner\": \"Sender\",\r\n   \"dropDate\": \"2019-09-29 18:46:19\",\r\n   \"returnSkus\": [\r\n       {\r\n           \"skuCode\": \"Inventory_01\",\r\n           \"skuQuantity\": \"4\",\r\n           \"batch\": null,\r\n           \"mrp\" : null\r\n           \r\n       }\r\n   ],\r\n   \"reason\": \"Did Not Like\",\r\n   \"remarks\": \"Remarks for Return\",\r\n   \"address\": {\r\n       \"shippingAddressLine1\": \"Tilak Nagar\",\r\n       \"shippingAddressLine2\": \"\",\r\n       \"shippingAddressLine3\": \"\",\r\n       \"shippingCountry\": \"\",\r\n       \"shippingState\": \"Daman\",\r\n       \"shippingDistrict\": \"Daman\",\r\n       \"shippingCity\": \"Daman\",\r\n       \"shippingPincode\": \"676767\"\r\n   },\r\n   \"gradeType\":\"Good\"\r\n}"
+				},
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/purchasereturn/create",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"oms",
+						"omsservices",
+						"webapi",
+						"purchasereturn",
+						"create"
+					]
+				},
+				"description": "This endpoint will create the Sale Order in OMS(Order Management System).The Sale Order will be in New State.\nThe Sale Order can be created with multiple Sale Order Skus."
+			},
+			"response": []
+		},
+		{
+			"name": "Create Purchase Return Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"returnRef\": \"a11234\",\r\n   \"warehouseName\": \"GL_WH_Smalkha\",\r\n   \"vendorCode\": \"827000002\",\r\n   \"shippingOwner\": \"Sender\",\r\n   \"dropDate\": \"2019-09-29 18:46:19\",\r\n   \"returnSkus\": [\r\n       {\r\n           \"skuCode\": \"Inventory_01\",\r\n           \"skuQuantity\": \"4\",\r\n           \"batch\": null,\r\n           \"mrp\" : null\r\n           \r\n       }\r\n   ],\r\n   \"reason\": \"Did Not Like\",\r\n   \"remarks\": \"Remarks for Return\",\r\n   \"address\": {\r\n       \"shippingAddressLine1\": \"Tilak Nagar\",\r\n       \"shippingAddressLine2\": \"\",\r\n       \"shippingAddressLine3\": \"\",\r\n       \"shippingCountry\": \"\",\r\n       \"shippingState\": \"Daman\",\r\n       \"shippingDistrict\": \"Daman\",\r\n       \"shippingCity\": \"Daman\",\r\n       \"shippingPincode\": \"676767\"\r\n   },\r\n   \"gradeType\":\"Good\"\r\n}"
+				},
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/purchasereturn/create",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"oms",
+						"omsservices",
+						"webapi",
+						"purchasereturn",
+						"create"
+					]
+				},
+				"description": "This endpoint will create the Sale Order in OMS(Order Management System).The Sale Order will be in New State.\nThe Sale Order can be created with multiple Sale Order Skus."
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel PO",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/purchase/order/cancelpurchaseorder?ponumber=9999",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"oms",
+						"omsservices",
+						"webapi",
+						"purchase",
+						"order",
+						"cancelpurchaseorder"
+					],
+					"query": [
+						{
+							"key": "ponumber",
+							"value": "9999"
+						}
+					]
+				},
+				"description": "This api can at max serve 20 ordernumber details"
+			},
+			"response": [
+				{
+					"name": "GetPackDoneDetails",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Referer",
+								"value": "https://industrybuying.gscmaven.com",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "https://industrybuying.gscmaven.com",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\t\"ordernumbers\": null,\n\t\t\"sincedate\" : 43000\n}"
+						},
+						"url": {
+							"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/packdonedetails/orderwise",
+							"protocol": "https",
+							"host": [
+								"testsku",
+								"gscmaven",
+								"in"
+							],
+							"path": [
+								"api",
+								"oms",
+								"omsservices",
+								"webapi",
+								"packdonedetails",
+								"orderwise"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.10.3 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 26 Feb 2019 06:45:31 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html;charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "https://industrybuying.gscmaven.com"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "X-Application-Context",
+							"value": "zuul:prod:8079"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "JSESSIONID=0898275A2E801F5F91B9237B4603E2C5; Path=/omsservices; HttpOnly"
+						},
+						{
+							"key": "Content-Language",
+							"value": "en"
+						}
+					],
+					"cookie": [],
+					"body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 401 – Unauthorized</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 401 – Unauthorized</h1><hr class=\"line\" /><p><b>Type</b> Status Report</p><p><b>Message</b> Unauthenticated</p><p><b>Description</b> The request has not been applied because it lacks valid authentication credentials for the target resource.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.10</h3></body></html>"
+				}
+			]
+		},
+		{
+			"name": "Get Inventory By SKU Codes",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t\"Inventory_01\"\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/inventory/byskus?warehouseid=5",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"oms",
+						"omsservices",
+						"webapi",
+						"inventory",
+						"byskus"
+					],
+					"query": [
+						{
+							"key": "warehouseid",
+							"value": "5"
+						}
+					]
+				},
+				"description": "This api can at max serve 20 ordernumber details"
+			},
+			"response": [
+				{
+					"name": "GetPackDoneDetails",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Referer",
+								"value": "https://industrybuying.gscmaven.com",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "https://industrybuying.gscmaven.com",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\t\"ordernumbers\": null,\n\t\t\"sincedate\" : 43000\n}"
+						},
+						"url": {
+							"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/packdonedetails/orderwise",
+							"protocol": "https",
+							"host": [
+								"testsku",
+								"gscmaven",
+								"in"
+							],
+							"path": [
+								"api",
+								"oms",
+								"omsservices",
+								"webapi",
+								"packdonedetails",
+								"orderwise"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.10.3 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 26 Feb 2019 06:45:31 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html;charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "https://industrybuying.gscmaven.com"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "X-Application-Context",
+							"value": "zuul:prod:8079"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "JSESSIONID=0898275A2E801F5F91B9237B4603E2C5; Path=/omsservices; HttpOnly"
+						},
+						{
+							"key": "Content-Language",
+							"value": "en"
+						}
+					],
+					"cookie": [],
+					"body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 401 – Unauthorized</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 401 – Unauthorized</h1><hr class=\"line\" /><p><b>Type</b> Status Report</p><p><b>Message</b> Unauthenticated</p><p><b>Description</b> The request has not been applied because it lacks valid authentication credentials for the target resource.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.10</h3></body></html>"
+				}
+			]
+		},
+		{
+			"name": "Update Sale Order Shipping Cost",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderId\" : \"DEMOO2\",\r\n    \"shippingCost\" : 1200.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/orders/updateshippingcost",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"oms",
+						"omsservices",
+						"webapi",
+						"orders",
+						"updateshippingcost"
+					]
+				},
+				"description": "This endpoint will create the Sale Order in OMS(Order Management System).The Sale Order will be in New State.\nThe Sale Order can be created with multiple Sale Order Skus."
+			},
+			"response": []
+		},
+		{
+			"name": "Check Sale Order Cancellable Status",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/orders/iscancellable?ordernumber=5562000003D",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"oms",
+						"omsservices",
+						"webapi",
+						"orders",
+						"iscancellable"
+					],
+					"query": [
+						{
+							"key": "ordernumber",
+							"value": "5562000003D"
+						}
+					]
+				},
+				"description": "This endpoint will create the Sale Order in OMS(Order Management System).The Sale Order will be in New State.\nThe Sale Order can be created with multiple Sale Order Skus."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Sale Return List",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderNumber\" : [\"5242200000S\"],\r\n     \"statusid\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/salereturn/list",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"oms",
+						"omsservices",
+						"webapi",
+						"salereturn",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ASN Packing",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"awb\": \"Awbjson1234\",\r\n    \"masterawb\": \"MasterAwbjson1234\",\r\n    \"mode\": \"LTL\",\r\n    \"lrnumber\": \"LR123456\",\r\n    \"transportername\": \"Ashok\",\r\n    \"ewbnumber\": \"ewb123456\",\r\n    \"orderNumber\": \"258210000TF\",\r\n    \"invoiceNumber\":\"Inv124323\",\r\n    \"asnBoxes\": [\r\n        {\r\n            \"length\": 1.0,\r\n            \"width\": 1.0,\r\n            \"height\": 1.0,\r\n            \"weight\": 1.0,\r\n            \"dimensionUnit\": \"m\",\r\n            \"weightUnit\": \"kg\",\r\n            \"boxnumber\": \"Boxnum1231236\",\r\n            \"asnBoxSkus\": [\r\n                {\r\n                    \"quantity\": 5,\r\n                    \"skuCode\": \"8500\",\r\n                    \"usnList\": [\r\n                        \"usn12346516\",\r\n                        \"usn35644526\",\r\n                        \"usn35644536\",\r\n                        \"usn35644546\",\r\n                        \"usn35644556\"\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/purchase/order/asnpacking",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"oms",
+						"omsservices",
+						"webapi",
+						"purchase",
+						"order",
+						"asnpacking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ASN Invoice",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"purchaseInvoiceNumber\": \"PoInv1236\",\r\n    \"purchaseInvoiceDateTime\": \"2021-11-26T20:14:15.547\",\r\n    \"invoiceLineItems\": [\r\n        {\r\n            \"skuCode\": \"8500\",\r\n            \"quantity\": 5,\r\n            \"grosses\": [\r\n                {\r\n                    \"grossAmount\": 500.0,\r\n                    \"grossType\": \"Item Price\",\r\n                    \"taxDetails\": [\r\n                        {\r\n                            \"taxPercentage\": 2.0,\r\n                            \"taxAmount\": 10.0,\r\n                            \"taxType\": \"GST\"\r\n                        }\r\n                    ],\r\n                    \"discounts\": [\r\n                        {\r\n                            \"discountAmount\": 20.0\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/purchase/order/asninvoice",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"oms",
+						"omsservices",
+						"webapi",
+						"purchase",
+						"order",
+						"asninvoice"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PO Update",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderId\": \"BBPO2\",\r\n    \"warehouseName\": \"GL_WH_Bangalore\",\r\n    \"vendorCode\": \"827000002\",\r\n    \"orderItems\": [\r\n        {\r\n            \"sellerSkuId\": \"Inventory_01\",\r\n            \"quantity\": 11,\r\n            \"pricePerItem\": 11.11\r\n        }\r\n    ],\r\n    \"shippingOwner\": \"RECEIVER\",\r\n    \"vendorAddressLine1\": \"Good Day New Delhi\",\r\n    \"vendorAddressLine2\": null,\r\n    \"vendorAddressLine3\": null,\r\n    \"vendorCity\": \"Noida\",\r\n    \"vendorDistrict\": \"Delhi\",\r\n    \"vendorState\": \"Delhi\",\r\n    \"vendorPincode\": \"110079\",\r\n    \"vendorCountry\": null,\r\n    \"paymentType\": \"Credit Card\",\r\n    \"shippingService\": \"FEDEX_STANDARD_OVERNIGHT\",\r\n    \"pickUpDate\": \"2019-12-08 13:59:50\",\r\n    \"dropDate\": \"2019-12-11 13:59:50\",\r\n    \"remarks\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/purchase/order/updatepo",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"oms",
+						"omsservices",
+						"webapi",
+						"purchase",
+						"order",
+						"updatepo"
+					]
+				},
+				"description": "This api can at max serve 20 ordernumber details"
+			},
+			"response": [
+				{
+					"name": "GetPackDoneDetails",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Referer",
+								"value": "https://industrybuying.gscmaven.com",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "https://industrybuying.gscmaven.com",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\t\"ordernumbers\": null,\n\t\t\"sincedate\" : 43000\n}"
+						},
+						"url": {
+							"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/packdonedetails/orderwise",
+							"protocol": "https",
+							"host": [
+								"testsku",
+								"gscmaven",
+								"in"
+							],
+							"path": [
+								"api",
+								"oms",
+								"omsservices",
+								"webapi",
+								"packdonedetails",
+								"orderwise"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.10.3 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 26 Feb 2019 06:45:31 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html;charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "https://industrybuying.gscmaven.com"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "X-Application-Context",
+							"value": "zuul:prod:8079"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "JSESSIONID=0898275A2E801F5F91B9237B4603E2C5; Path=/omsservices; HttpOnly"
+						},
+						{
+							"key": "Content-Language",
+							"value": "en"
+						}
+					],
+					"cookie": [],
+					"body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 401 – Unauthorized</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 401 – Unauthorized</h1><hr class=\"line\" /><p><b>Type</b> Status Report</p><p><b>Message</b> Unauthenticated</p><p><b>Description</b> The request has not been applied because it lacks valid authentication credentials for the target resource.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.10</h3></body></html>"
+				}
+			]
+		},
+		{
+			"name": "Get Inventory Adjustment Detail V2",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/inventory/v2/findbyadjustmentid?adjustmentid=21816",
+					"protocol": "https",
+					"host": [
+						"testsku",
+						"gscmaven",
+						"in"
+					],
+					"path": [
+						"api",
+						"oms",
+						"omsservices",
+						"webapi",
+						"inventory",
+						"v2",
+						"findbyadjustmentid"
+					],
+					"query": [
+						{
+							"key": "adjustmentid",
+							"value": "21816"
+						}
+					]
+				},
+				"description": "This api can at max serve 20 ordernumber details"
+			},
+			"response": [
+				{
+					"name": "GetPackDoneDetails",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Referer",
+								"value": "https://industrybuying.gscmaven.com",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "https://industrybuying.gscmaven.com",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\t\"ordernumbers\": null,\n\t\t\"sincedate\" : 43000\n}"
+						},
+						"url": {
+							"raw": "https://testsku.gscmaven.in/api/oms/omsservices/webapi/packdonedetails/orderwise",
+							"protocol": "https",
+							"host": [
+								"testsku",
+								"gscmaven",
+								"in"
+							],
+							"path": [
+								"api",
+								"oms",
+								"omsservices",
+								"webapi",
+								"packdonedetails",
+								"orderwise"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.10.3 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 26 Feb 2019 06:45:31 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html;charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "https://industrybuying.gscmaven.com"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "X-Application-Context",
+							"value": "zuul:prod:8079"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "JSESSIONID=0898275A2E801F5F91B9237B4603E2C5; Path=/omsservices; HttpOnly"
+						},
+						{
+							"key": "Content-Language",
+							"value": "en"
+						}
+					],
+					"cookie": [],
+					"body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 401 – Unauthorized</title><style type=\"text/css\">h1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} h2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} h3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} body {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} b {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} p {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;} a {color:black;} a.name {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 401 – Unauthorized</h1><hr class=\"line\" /><p><b>Type</b> Status Report</p><p><b>Message</b> Unauthenticated</p><p><b>Description</b> The request has not been applied because it lacks valid authentication credentials for the target resource.</p><hr class=\"line\" /><h3>Apache Tomcat/9.0.10</h3></body></html>"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

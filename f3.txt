@@ -1,2 +1,25 @@
-java
-python
+apiVersion: v1
+kind: Pod
+metadata:
+  name: e2e-processdispute-p1
+spec:
+  containers:
+    - name: cypress-container
+      image: cypressmocha
+      volumeMounts:
+        - name: videos-volume
+          mountPath: /cypressproject/cypress/reports/videos
+        - name: mocha-volume
+          mountPath: /cypressproject/cypress/reports/mocha
+        - name: workflows-volume
+          mountPath: /cypressproject/cypress/reports/mochareports/assets/workflows
+  volumes:
+    - name: videos-volume
+      hostPath:
+        path: /path/to/host/cypress/reports/videos
+    - name: mocha-volume
+      hostPath:
+        path: /path/to/host/cypress/reports/mocha
+    - name: workflows-volume
+      hostPath:
+        path: /path/to/host/cypress/reports/mochareports/assets/workflows

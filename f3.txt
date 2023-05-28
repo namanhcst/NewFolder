@@ -1,25 +1,61 @@
-apiVersion: v1
-kind: Pod
-metadata:
-  name: e2e-processdispute-p1
-spec:
-  containers:
-    - name: cypress-container
-      image: cypressmocha
-      volumeMounts:
-        - name: videos-volume
-          mountPath: /cypressproject/cypress/reports/videos
-        - name: mocha-volume
-          mountPath: /cypressproject/cypress/reports/mocha
-        - name: workflows-volume
-          mountPath: /cypressproject/cypress/reports/mochareports/assets/workflows
-  volumes:
-    - name: videos-volume
-      hostPath:
-        path: /path/to/host/cypress/reports/videos
-    - name: mocha-volume
-      hostPath:
-        path: /path/to/host/cypress/reports/mocha
-    - name: workflows-volume
-      hostPath:
-        path: /path/to/host/cypress/reports/mochareports/assets/workflows
+To set up Minikube on a Mac M1, you can follow these steps:
+
+1. Install Docker Desktop: Go to the Docker website (https://www.docker.com/products/docker-desktop) and download Docker Desktop for Mac. Follow the installation instructions to install Docker on your Mac M1.
+
+2. Install Homebrew: Open Terminal and run the following command to install Homebrew if you haven't already:
+
+   ```shell
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+
+3. Install Minikube: Run the following command in Terminal to install Minikube using Homebrew:
+
+   ```shell
+   brew install minikube
+   ```
+
+4. Start Minikube: Open Terminal and start Minikube with the following command:
+
+   ```shell
+   minikube start --driver=docker
+   ```
+
+   This command starts Minikube using the Docker driver.
+
+5. Verify Minikube: Run the following command to verify that Minikube is running:
+
+   ```shell
+   minikube status
+   ```
+
+   If Minikube is running, you should see output indicating that it is in the "Running" state.
+
+6. Set Docker environment variables: Run the following command to set the Docker environment variables for Minikube:
+
+   ```shell
+   eval $(minikube docker-env)
+   ```
+
+   This ensures that Minikube uses the Docker daemon inside the Minikube VM.
+
+7. Test Minikube: Run the following command to test Minikube by deploying a sample application:
+
+   ```shell
+   kubectl create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.4
+   ```
+
+8. Expose the service: Run the following command to expose the deployment as a service:
+
+   ```shell
+   kubectl expose deployment hello-minikube --type=NodePort --port=8080
+   ```
+
+9. Access the application: Run the following command to get the URL to access the application:
+
+   ```shell
+   minikube service hello-minikube --url
+   ```
+
+   This will output the URL that you can use to access the deployed application.
+
+That's it! You have now set up Minikube on your Mac M1 and deployed a sample application. You can continue exploring and deploying your own applications on the Minikube cluster.

@@ -1,3 +1,7 @@
+curl k X POST -u svc tcs tcsweb smoketester sa:1180ea250f0e3b6f81e6ca82df57f287e9
+http://10.113.189.32:8080/view/TCS-QA/job/PEGA-CacheBuildingAPI/buildWithParameters?token-test@123
+F testType-CacheBuildingAPI -F testEnV-UAT API -F testClients-All -F testNodes-All
+
 To set up Minikube on a Mac M1, you can follow these steps:
 
 1. Install Docker Desktop: Go to the Docker website (https://www.docker.com/products/docker-desktop) and download Docker Desktop for Mac. Follow the installation instructions to install Docker on your Mac M1.

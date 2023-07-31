@@ -1,4 +1,4 @@
-curl k X POST -u svc tcs tcsweb smoketester sa:1180ea250f0e3b6f81e6ca82df57f287e9
+As previously discussed with Aswin, we kindly request that every team member creates their own remote feature branch from the integration branch and commits their changes to that specific branch. After receiving approval through a pull request from the designated Approvers (Aswin, Naman, and Rohit), the code will be merged into the integration branch. We recommend committing code regularly rather than waiting for completion to track the progress effectively. Thank you for your cooperation k X POST -u svc tcs tcsweb smoketester sa:1180ea250f0e3b6f81e6ca82df57f287e9
 http://10.113.189.32:8080/view/TCS-QA/job/PEGA-CacheBuildingAPI/buildWithParameters?token-test@123
 F testType-CacheBuildingAPI -F testEnV-UAT API -F testClients-All -F testNodes-All
 

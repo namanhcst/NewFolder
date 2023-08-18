@@ -1,69 +1,31 @@
-https://drive.google.com/file/d/1rc6gpc6NzfUNh452mfK4EZrTPMTMI66Y/view?usp=drivesdk
+# Use a Linux base image
+FROM ubuntu:latest
 
-I am writing to report an incident that took place recently. A team member unintentionally attempted to push company code to GitHub.com using their company email. I wanted to ensure this situation is documented and brought to your attention. No further action is being taken at this time.
+# Update package list and install necessary dependencies
+RUN apt-get update && \
+    apt-get install -y curl wget gnupg && \
+    apt-get clean
 
-As previously discussed with Aswin, we kindly request that every team member creates their own remote feature branch from the integration branch and commits their changes to that specific branch. After receiving approval through a pull request from the designated Approvers (Aswin, Naman, and Rohit), the code will be merged into the integration branch. We recommend committing code regularly rather than waiting for completion to track the progress effectively. Thank you for your cooperation k X POST -u svc tcs tcsweb smoketester sa:1180ea250f0e3b6f81e6ca82df57f287e9
-http://10.113.189.32:8080/view/TCS-QA/job/PEGA-CacheBuildingAPI/buildWithParameters?token-test@123
-F testType-CacheBuildingAPI -F testEnV-UAT API -F testClients-All -F testNodes-All
+# Install Node.js 14 (or your desired version)
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get install -y nodejs
 
-To set up Minikube on a Mac M1, you can follow these steps:
+# Install Google Chrome
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+RUN apt-get update && apt-get install -y google-chrome-stable
 
-1. Install Docker Desktop: Go to the Docker website (https://www.docker.com/products/docker-desktop) and download Docker Desktop for Mac. Follow the installation instructions to install Docker on your Mac M1.
+# Set Chrome flags to disable sandboxing for Docker
+RUN sed -i 's|exec -a "$0" "$HERE/chrome" "$@"|exec -a "$0" "$HERE/chrome" "$@" --no-sandbox --disable-dev-shm-usage|g' /opt/google/chrome/google-chrome
 
-2. Install Homebrew: Open Terminal and run the following command to install Homebrew if you haven't already:
+# Set the default working directory
+WORKDIR /app
 
-   ```shell
-   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-   ```
+# Install Cypress
+RUN npm install cypress
 
-3. Install Minikube: Run the following command in Terminal to install Minikube using Homebrew:
+# Copy your application files into the image
+COPY . .
 
-   ```shell
-   brew install minikube
-   ```
-
-4. Start Minikube: Open Terminal and start Minikube with the following command:
-
-   ```shell
-   minikube start --driver=docker
-   ```
-
-   This command starts Minikube using the Docker driver.
-
-5. Verify Minikube: Run the following command to verify that Minikube is running:
-
-   ```shell
-   minikube status
-   ```
-
-   If Minikube is running, you should see output indicating that it is in the "Running" state.
-
-6. Set Docker environment variables: Run the following command to set the Docker environment variables for Minikube:
-
-   ```shell
-   eval $(minikube docker-env)
-   ```
-
-   This ensures that Minikube uses the Docker daemon inside the Minikube VM.
-
-7. Test Minikube: Run the following command to test Minikube by deploying a sample application:
-
-   ```shell
-   kubectl create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.4
-   ```
-
-8. Expose the service: Run the following command to expose the deployment as a service:
-
-   ```shell
-   kubectl expose deployment hello-minikube --type=NodePort --port=8080
-   ```
-
-9. Access the application: Run the following command to get the URL to access the application:
-
-   ```shell
-   minikube service hello-minikube --url
-   ```
-
-   This will output the URL that you can use to access the deployed application.
-
-That's it! You have now set up Minikube on your Mac M1 and deployed a sample application. You can continue exploring and deploying your own applications on the Minikube cluster.
+# Run Cypress tests (replace with your command)
+CMD [ "npx", "cypress", "run" ]

@@ -1,0 +1,340 @@
+Exception Handling
+===================
+
+An unwanted unexpected event that disturbs normal flow of the program is called
+exception
+
+Example:
+FileNotFoundException
+
+ It is highly recommended to handle exceptions. The main objective of exception
+handling is graceful (normal) termination of the program.
+
+
+What is the meaning of exception handling?
+ Exception handling doesn’t mean repairing an exception. We have to define alternative
+way to continue rest of the program normally this way of “defining alternative is nothing
+but exception handling”.
+
+Example: 
+
+try
+{
+read data from london file
+}
+catch(FileNotFoundException e)
+{
+use local file and continue rest of the program normally
+}
+}
+.
+.
+.
+
+
+Runtime stack mechanism: 
+=========================
+
+For every thread JVM will create a separate stack all method calls performed by the thread will be stored in that stack. Each entry in the stack is called “one activation record” (or) “stack frame”. After completing every method call JVM removes the
+corresponding entry from the stack. After completing all method calls JVM destroys the empty
+stack and terminates the program normally.
+
+
+
+Example:
+class Test
+{
+public static void main(String[] args){
+doStuff();
+}
+public static void doStuff(){
+doMoreStuff();
+}
+public static void doMoreStuff(){
+System.out.println("Hello");
+}}
+Output:
+Hello
+
+
+Diagram:
+
+1. Empty stack 
+2. main() 
+3. main(), doStuff()
+4. main(), doStuff(), doMoreStuff()
+5. main(), doStuff()
+6. main()
+7. Empty stack <= destroyed by JVM
+
+Default exception handling in java:
+=======================================
+
+1) If an exception raised inside any method then the method is responsible to create
+Exception object with the following information.
+	1) Name of the exception.
+	2) Description of the exception.
+	3) Location of the exception
+
+2) After creating that Exception object the method handovers that object to the JVM.
+3) JVM checks whether the method contains any exception handling code or not. If
+method won’t contain any handling code then JVM terminates that method abnormally
+and removes corresponding entry form the stack.
+4) JVM identifies the caller method and checks whether the caller method contain any
+handling code or not. If the caller method also does not contain handling code then JVM
+terminates that caller also abnormally and the removes corresponding entry from the
+stack.
+5) This process will be continued until main() method and if the main() method also
+doesn’t contain any exception handling code then JVM terminates main() method and
+removes corresponding entry from the stack.
+6) Then JVM handovers the responsibility of exception handling to the default exception
+handler.
+7) Default exception handler just print exception information to the console in the
+following formats and terminates the program abnormally.
+
+Name of exception: description
+Location of exception (stack trace)
+
+Example:
+class Test
+{
+	public static void main(String[] args){
+		doStuff();
+	}
+	
+	public static void doStuff(){
+		doMoreStuff();
+	}
+	
+	public static void doMoreStuff(){
+		System.out.println(10/0);
+	}
+}
+
+Output:
+Runtime error
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+141
+at Test.doMoreStuff(Test.java:10)
+at Test.doStuff(Test.java:7)
+at Test.main(Test.java:4)
+
+=====================
+Exception hierarchy:
+=====================
+
+Throwable acts as a root for exception hierarchy.
+Throwable class contains the following two child classes.
+
+1) Exception 2) Error
+
+Exception: Most of the cases exceptions are caused by our program and these are recoverable.
+
+Error: Most of the cases errors are not caused by our program these are due to lack of system
+resources and these are non recoverable
+
+
+Checked Vs Unchecked Exceptions:
+================================
+ The exceptions which are checked by the compiler for smooth execution of the program
+at runtime are called checked exceptions.
+1) HallTicketMissingException
+2) PenNotWorkingException
+3) FileNotFoundException
+
+ The exceptions which are not checked by the compiler are called unchecked exceptions.
+1) BombBlaustException
+2) ArithmeticException
+3) NullPointerException
+
+Note: RuntimeException and its child classes, Error and its child classes are unchecked and all
+the remaining are considered as checked exceptions.
+
+Note: Whether exception is checked or unchecked compulsory it should occur at runtime only
+there is no chance of occurring any exception at compile time.
+
+Customized exception handling by try catch:
+============================================
+
+try
+{
+risky code
+}
+catch(Exception e)
+{
+handling code
+}
+
+
+Ex- 
+class Test{
+public static void main(String[] args){
+System.out.println("statement1");
+try{
+System.out.println(10/0);
+}
+catch(ArithmeticException e){
+System.out.println(10/2);
+}
+System.out.println("statement3");
+}}
+Output:
+statement1
+5
+statement3
+Normal termination
+
+Note:
+=======
+1. Within the try block if anywhere an exception raised then rest of the try block won’t
+be executed even though we handled that exception. Hence we have to place/take
+only risk code inside try and length of the try block should be as less as possible.
+2. If any statement which raises an exception and it is not part of any try block then it is
+always abnormal termination of the program.
+3. There may be a chance of raising an exception inside catch and finally blocks also in
+addition to try block
+
+
+Various methods to print exception information:
+==================================================
+
+ Throwable class defines the following methods to print exception information to the
+console.
+
+printStackTrace(): This method prints exception information in the following format.
+Name of the exception: description of exception
+Stack trace
+
+toString(): This method prints exception information in the following format.
+Name of the exception: description of exception
+
+getMessage(): This method returns only description of the exception.
+Description
+
+Finally block:
+=================
+ It is never recommended to take clean up code inside try block because there is no
+guarantee for the execution of every statement inside a try.
+ It is never recommended to place clean up code inside catch block because if there is no
+exception then catch block won’t be executed.
+ We require some place to maintain clean up code which should be executed always
+irrespective of whether exception raised or not raised and whether handled or not
+handled such type of place is nothing but finally block.
+ Hence the main objective of finally block is to maintain cleanup code.
+Ex- 
+try
+{
+risky code
+}
+catch(x e)
+{
+handling code
+}
+finally
+{
+cleanup code
+}
+
+Difference between final, finally, and finalize
+================================================
+Final:
+ Final is the modifier applicable for class, methods and variables.
+ If a class declared as the final then child class creation is not possible.
+ If a method declared as the final then overriding of that method is not possible.
+ If a variable declared as the final then reassignment is not possible.
+Finally:
+ It is the block always associated with try catch to maintain clean up code which should
+be executed always irrespective of whether exception raised or not raised and whether
+handled or not handled.
+Finalize:
+ It is a method which should be called by garbage collector always just before destroying
+an object to perform cleanup activities
+
+
+Throw statement: 
+=================
+Sometime we can create exception object explicitly and we can hand over to the JVM manually by using throw keyword.
+
+throw new ArithmeticException("/ by zero");
+
+
+Throws statement: 
+==================
+
+in our program if there is any chance of raising checked exception
+compulsory we should handle either by try catch or by throws keyword otherwise the code
+won’t compile.
+
+Example:
+class Test3
+{
+	public static void main(String[] args){
+		Thread.sleep(5000);
+}
+}
+
+Unreported exception java.lang.InterruptedException; must be caught or declared to be thrown. 
+
+We can handle this compile time error by using the following 2 ways.
+Example:
+By using try catch By using throws keyword
+class Test3
+{
+	public static void main(String[] args){
+		try{
+			Thread.sleep(5000);
+		}
+		catch(InterruptedException e){}
+	}
+}
+Output:
+Compile and running successfully
+
+ We can use throws keyword to delicate the responsibility of exception handling to the caller
+method. Then caller method is responsible to handle that exception.
+
+class Test3
+{
+public static void main(String[]args)throws InterruptedException{
+	Thread.sleep(5000);
+}
+}
+Output:
+Compile and running successfully
+
+ Hence the main objective of “throws” keyword is to delicate the responsibility of
+exception handling to the caller method.
+ “throws” keyword required only checked exceptions. Usage of throws for unchecked
+exception there is no use.
+ “throws” keyword required only to convenes complier. Usage of throws keyword
+doesn’t prevent abnormal termination of the program.
+
+
+Exception handling keywords summary:
+======================================
+1) try: To maintain risky code.
+2) catch: To maintain handling code.
+3) finally: To maintain cleanup code.
+4) throw: To handover our created exception object to the JVM manually.
+5) throws: To delegate responsibility of exception handling to the caller method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,3 +1,50 @@
+Sub CreateCypressFrameworkSlide()
+    Dim pptApp As Object
+    Set pptApp = CreateObject("PowerPoint.Application")
+    pptApp.Visible = True
+
+    ' Create a new presentation
+    Dim pptPresentation As Object
+    Set pptPresentation = pptApp.Presentations.Add
+
+    ' Add a slide with a title and content layout
+    Dim pptSlide As Object
+    Set pptSlide = pptPresentation.Slides.Add(1, ppLayoutText)
+
+    ' Set the slide title
+    pptSlide.Shapes(1).TextFrame.TextRange.Text = "Cypress Framework Development Journey"
+
+    ' Set slide content
+    pptSlide.Shapes(2).TextFrame.TextRange.Text = "Built TDD framework." & vbCrLf & _
+        "Setup Database to store critical test data." & vbCrLf & _
+        "Mochaawesome HTML reports with screenshot attachments for failure test cases." & vbCrLf & _
+        "Written custom methods for reusability." & vbCrLf & _
+        "Jenkins job to trigger test scripts." & vbCrLf & _
+        "Converted TDD to BDD test framework." & vbCrLf & _
+        "BDD offers Scenario based test automation." & vbCrLf & _
+        "Generated HTML reports with step-wise status." & vbCrLf & _
+        "Framework development & enhancement." & vbCrLf & _
+        "Restructured Feature/Step-def folders." & vbCrLf & _
+        "Set up parallel feature runs." & vbCrLf & _
+        "Excel downloads for test script status." & vbCrLf & _
+        "Implemented Jenkins Pipeline." & vbCrLf & _
+        "Completed Product/OnDemand Test runs." & vbCrLf & _
+        "Archived test results to Nexus repo." & vbCrLf & _
+        "Sent email notifications to stakeholders."
+
+    ' You can adjust slide design, fonts, colors, and visuals as needed.
+
+    ' Save the presentation
+    pptPresentation.SaveAs "YourFilePath\YourPresentationName.pptx"
+
+    ' Clean up
+    pptPresentation.Close
+    Set pptPresentation = Nothing
+    pptApp.Quit
+    Set pptApp = Nothing
+End Sub
+
+
 https://drive.google.com/drive/folders/1m6sAw7ukiWuym0w1f0LklWyiSgr8fw8n?usp=sharing
 
 # Use a Linux base image

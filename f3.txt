@@ -29,6 +29,57 @@ Sub CreateCypressFrameworkHistorySlide()
     For i = 1 To 5
         Set pptText = pptSlide.Shapes.AddTextEffect( _
             PresetTextEffect:=msoTextEffect1, Text:="▼", _
+            FontName:="Arial Black", FontSize:=16, Left:=LeftPos, Top:=200)
+        pptText.Rotation = 0
+        pptText.TextFrame.TextRange.Text = Milestones(i)
+        pptText.TextFrame.TextRange.Font.Bold = msoTrue
+        pptText.TextFrame.TextRange.Font.Fill.ForeColor.RGB = RGB(0, 51, 102)
+        LeftPos = LeftPos + 120
+    Next i
+
+    ' Save the presentation
+    pptPresentation.SaveAs "YourFilePath\YourPresentationName.pptx"
+
+    ' Clean up
+    pptPresentation.Close
+    Set pptPresentation = Nothing
+    pptApp.Quit
+    Set pptApp = Nothing
+End Sub
+
+
+#####
+Sub CreateCypressFrameworkHistorySlide()
+    Dim pptApp As Object
+    Set pptApp = CreateObject("PowerPoint.Application")
+    pptApp.Visible = True
+
+    ' Create a new presentation
+    Dim pptPresentation As Object
+    Set pptPresentation = pptApp.Presentations.Add
+
+    ' Add a blank slide
+    Dim pptSlide As Object
+    Set pptSlide = pptPresentation.Slides.Add(1, ppLayoutText)
+
+    ' Set the slide title
+    pptSlide.Shapes(1).TextFrame.TextRange.Text = "Cypress Framework Development History"
+
+    ' Define an array to hold your milestones
+    Dim Milestones(1 To 5) As String
+    Milestones(1) = "TDD Framework"
+    Milestones(2) = "BDD Transition"
+    Milestones(3) = "Enhancements & Reusability"
+    Milestones(4) = "Parallel Feature Runs"
+    Milestones(5) = "Complete Product Tests"
+
+    ' Create a timeline or flowchart on the slide
+    Dim LeftPos As Single
+    LeftPos = 100
+
+    For i = 1 To 5
+        Set pptText = pptSlide.Shapes.AddTextEffect( _
+            PresetTextEffect:=msoTextEffect1, Text:="▼", _
             FontName:="Arial", FontSize:=16, Left:=LeftPos, Top:=200)
         pptText.Rotation = 0
         pptText.TextFrame.TextRange.Text = Milestones(i)

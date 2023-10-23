@@ -1,3 +1,17 @@
+
+// nps-scripts.js
+const { series, concurrent } = require('nps-utils');
+
+module.exports = {
+  scripts: {
+    tms: 'npm run --spec /e2e/script',
+    composite: 'npm run --spec /e2e/script',
+  },
+  tms: 'nps scripts.tms',
+  composite: 'nps scripts.composite',
+  parallel: concurrent.nps('tms', 'composite'),
+};
+
 Sub CreateCypressFrameworkHistorySlide()
     Dim pptApp As Object
     Set pptApp = CreateObject("PowerPoint.Application")

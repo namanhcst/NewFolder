@@ -1,245 +1,70 @@
+import java.util.*;
 
-// nps-scripts.js
-const { series, concurrent } = require('nps-utils');
+public class Solution {
+    
+    // Precompute even powers of 2 up to some max
+    private static List<Integer> evenPowersOfTwo(int max) {
+        List<Integer> list = new ArrayList<>();
+        int pow = 4; // smallest even power of 2
+        while (pow <= max) {
+            list.add(pow);
+            pow *= 4; // next even power of 2
+        }
+        return list;
+    }
 
-module.exports = {
-  scripts: {
-    tms: 'npm run --spec /e2e/script',
-    composite: 'npm run --spec /e2e/script',
-  },
-  tms: 'nps scripts.tms',
-  composite: 'nps scripts.composite',
-  parallel: concurrent.nps('tms', 'composite'),
-};
+    public static List<Integer> getMinimumKValues(List<Integer> arr) {
+        List<Integer> result = new ArrayList<>();
+        int maxVal = Collections.max(arr);
+        List<Integer> powers = evenPowersOfTwo(maxVal);
 
-Sub CreateCypressFrameworkHistorySlide()
-    Dim pptApp As Object
-    Set pptApp = CreateObject("PowerPoint.Application")
-    pptApp.Visible = True
+        for (int num : arr) {
+            int best = Integer.MAX_VALUE;
+            boolean found = false;
 
-    ' Create a new presentation
-    Dim pptPresentation As Object
-    Set pptPresentation = pptApp.Presentations.Add
+            // try small = 1, 2, 3
+            for (int small = 1; small <= 3; small++) {
+                if (num < small) continue;
+                int remaining = num - small;
 
-    ' Add a blank slide
-    Dim pptSlide As Object
-    Set pptSlide = pptPresentation.Slides.Add(1, ppLayoutText)
+                if (remaining == 0) {
+                    best = Math.min(best, 1);
+                    found = true;
+                } else {
+                    int count = 1; // for the small one
+                    int rem = remaining;
 
-    ' Set the slide title
-    pptSlide.Shapes(1).TextFrame.TextRange.Text = "Cypress Framework Development History"
+                    // Greedily subtract largest even power of 2 until rem = 0
+                    for (int i = powers.size() - 1; i >= 0; i--) {
+                        int p = powers.get(i);
+                        while (rem >= p) {
+                            rem -= p;
+                            count++;
+                        }
+                    }
 
-    ' Define milestones and positions
-    Dim Milestones(1 To 5) As String
-    Dim LeftPos As Single
-    LeftPos = 100
-    Milestones(1) = "TDD Framework"
-    Milestones(2) = "BDD Transition"
-    Milestones(3) = "Enhancements & Reusability"
-    Milestones(4) = "Parallel Feature Runs"
-    Milestones(5) = "Complete Product Tests"
+                    if (rem == 0) {
+                        best = Math.min(best, count);
+                        found = true;
+                    }
+                }
+            }
 
-    ' Create milestones
-    For i = 1 To 5
-        Set pptText = pptSlide.Shapes.AddTextFrame( _
-            msoTextOrientationHorizontal, LeftPos, 200, 120, 30)
-        pptText.TextFrame.TextRange.Text = Milestones(i)
-        pptText.TextFrame.TextRange.Font.Bold = msoTrue
-        pptText.TextFrame.TextRange.Font.Color.RGB = RGB(0, 51, 102)
-        LeftPos = LeftPos + 120
-    Next i
+            result.add(found ? best : -1);
+        }
+        return result;
+    }
 
-    ' Save the presentation
-    pptPresentation.SaveAs "YourFilePath\YourPresentationName.pptx"
-
-    ' Clean up
-    pptPresentation.Close
-    Set pptPresentation = Nothing
-    pptApp.Quit
-    Set pptApp = Nothing
-End Sub
-
-####
-Sub CreateCypressFrameworkHistorySlide()
-    Dim pptApp As Object
-    Set pptApp = CreateObject("PowerPoint.Application")
-    pptApp.Visible = True
-
-    ' Create a new presentation
-    Dim pptPresentation As Object
-    Set pptPresentation = pptApp.Presentations.Add
-
-    ' Add a blank slide
-    Dim pptSlide As Object
-    Set pptSlide = pptPresentation.Slides.Add(1, ppLayoutText)
-
-    ' Set the slide title
-    pptSlide.Shapes(1).TextFrame.TextRange.Text = "Cypress Framework Development History"
-
-    ' Define an array to hold your milestones
-    Dim Milestones(1 To 5) As String
-    Milestones(1) = "TDD Framework"
-    Milestones(2) = "BDD Transition"
-    Milestones(3) = "Enhancements & Reusability"
-    Milestones(4) = "Parallel Feature Runs"
-    Milestones(5) = "Complete Product Tests"
-
-    ' Create a timeline or flowchart on the slide
-    Dim LeftPos As Single
-    LeftPos = 100
-
-    For i = 1 To 5
-        Set pptText = pptSlide.Shapes.AddTextEffect( _
-            PresetTextEffect:=msoTextEffect1, Text:="▼", _
-            FontName:="Arial Black", FontSize:=16, Left:=LeftPos, Top:=200)
-        pptText.Rotation = 0
-        pptText.TextFrame.TextRange.Text = Milestones(i)
-        pptText.TextFrame.TextRange.Font.Bold = msoTrue
-        pptText.TextFrame.TextRange.Font.Fill.ForeColor.RGB = RGB(0, 51, 102)
-        LeftPos = LeftPos + 120
-    Next i
-
-    ' Save the presentation
-    pptPresentation.SaveAs "YourFilePath\YourPresentationName.pptx"
-
-    ' Clean up
-    pptPresentation.Close
-    Set pptPresentation = Nothing
-    pptApp.Quit
-    Set pptApp = Nothing
-End Sub
-
-
-#####
-Sub CreateCypressFrameworkHistorySlide()
-    Dim pptApp As Object
-    Set pptApp = CreateObject("PowerPoint.Application")
-    pptApp.Visible = True
-
-    ' Create a new presentation
-    Dim pptPresentation As Object
-    Set pptPresentation = pptApp.Presentations.Add
-
-    ' Add a blank slide
-    Dim pptSlide As Object
-    Set pptSlide = pptPresentation.Slides.Add(1, ppLayoutText)
-
-    ' Set the slide title
-    pptSlide.Shapes(1).TextFrame.TextRange.Text = "Cypress Framework Development History"
-
-    ' Define an array to hold your milestones
-    Dim Milestones(1 To 5) As String
-    Milestones(1) = "TDD Framework"
-    Milestones(2) = "BDD Transition"
-    Milestones(3) = "Enhancements & Reusability"
-    Milestones(4) = "Parallel Feature Runs"
-    Milestones(5) = "Complete Product Tests"
-
-    ' Create a timeline or flowchart on the slide
-    Dim LeftPos As Single
-    LeftPos = 100
-
-    For i = 1 To 5
-        Set pptText = pptSlide.Shapes.AddTextEffect( _
-            PresetTextEffect:=msoTextEffect1, Text:="▼", _
-            FontName:="Arial", FontSize:=16, Left:=LeftPos, Top:=200)
-        pptText.Rotation = 0
-        pptText.TextFrame.TextRange.Text = Milestones(i)
-        pptText.TextFrame.TextRange.Font.Bold = msoTrue
-        pptText.TextFrame.TextRange.Font.Color.RGB = RGB(0, 51, 102)
-        LeftPos = LeftPos + 120
-    Next i
-
-    ' Save the presentation
-    pptPresentation.SaveAs "YourFilePath\YourPresentationName.pptx"
-
-    ' Clean up
-    pptPresentation.Close
-    Set pptPresentation = Nothing
-    pptApp.Quit
-    Set pptApp = Nothing
-End Sub
-
-
-
-#########
-
-Sub CreateCypressFrameworkSlide()
-    Dim pptApp As Object
-    Set pptApp = CreateObject("PowerPoint.Application")
-    pptApp.Visible = True
-
-    ' Create a new presentation
-    Dim pptPresentation As Object
-    Set pptPresentation = pptApp.Presentations.Add
-
-    ' Add a slide with a title and content layout
-    Dim pptSlide As Object
-    Set pptSlide = pptPresentation.Slides.Add(1, ppLayoutText)
-
-    ' Set the slide title
-    pptSlide.Shapes(1).TextFrame.TextRange.Text = "Cypress Framework Development Journey"
-
-    ' Set slide content
-    pptSlide.Shapes(2).TextFrame.TextRange.Text = "Built TDD framework." & vbCrLf & _
-        "Setup Database to store critical test data." & vbCrLf & _
-        "Mochaawesome HTML reports with screenshot attachments for failure test cases." & vbCrLf & _
-        "Written custom methods for reusability." & vbCrLf & _
-        "Jenkins job to trigger test scripts." & vbCrLf & _
-        "Converted TDD to BDD test framework." & vbCrLf & _
-        "BDD offers Scenario based test automation." & vbCrLf & _
-        "Generated HTML reports with step-wise status." & vbCrLf & _
-        "Framework development & enhancement." & vbCrLf & _
-        "Restructured Feature/Step-def folders." & vbCrLf & _
-        "Set up parallel feature runs." & vbCrLf & _
-        "Excel downloads for test script status." & vbCrLf & _
-        "Implemented Jenkins Pipeline." & vbCrLf & _
-        "Completed Product/OnDemand Test runs." & vbCrLf & _
-        "Archived test results to Nexus repo." & vbCrLf & _
-        "Sent email notifications to stakeholders."
-
-    ' You can adjust slide design, fonts, colors, and visuals as needed.
-
-    ' Save the presentation
-    pptPresentation.SaveAs "YourFilePath\YourPresentationName.pptx"
-
-    ' Clean up
-    pptPresentation.Close
-    Set pptPresentation = Nothing
-    pptApp.Quit
-    Set pptApp = Nothing
-End Sub
-
-
-https://drive.google.com/drive/folders/1m6sAw7ukiWuym0w1f0LklWyiSgr8fw8n?usp=sharing
-
-# Use a Linux base image
-FROM ubuntu:latest
-
-# Update package list and install necessary dependencies
-RUN apt-get update && \
-    apt-get install -y curl wget gnupg && \
-    apt-get clean
-
-# Install Node.js 14 (or your desired version)
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
-RUN apt-get install -y nodejs
-
-# Install Google Chrome
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-RUN apt-get update && apt-get install -y google-chrome-stable
-
-# Set Chrome flags to disable sandboxing for Docker
-RUN sed -i 's|exec -a "$0" "$HERE/chrome" "$@"|exec -a "$0" "$HERE/chrome" "$@" --no-sandbox --disable-dev-shm-usage|g' /opt/google/chrome/google-chrome
-
-# Set the default working directory
-WORKDIR /app
-
-# Install Cypress
-RUN npm install cypress
-
-# Copy your application files into the image
-COPY . .
-
-# Run Cypress tests (replace with your command)
-CMD [ "npx", "cypress", "run" ]
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        List<Integer> arr = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            arr.add(sc.nextInt());
+        }
+        List<Integer> ans = getMinimumKValues(arr);
+        for (int x : ans) {
+            System.out.print(x + " ");
+        }
+    }
+}
